@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tecla Adapta Lite – Interface Cognitiva Inclusiva</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #111, #1a1a1a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .container {
+      background-color: #222;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      max-width: 600px;
+      width: 100%;
+      margin: auto;
+    }
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    button {
+      padding: 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.75rem;
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .output {
+      margin-top: 2rem;
+      background: #000;
+      border: 1px solid #444;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Tecla Adapta Lite – Comunicação Visual Interativa</h1>
+    <p>Escolhe abaixo o que estás a sentir ou a querer expressar. A IA interpretará teu comando visualmente e verbalmente.</p>
+    
+    <div class="option-grid">
+      <button onclick="responder('Tenho fome', 'Nguli nhi sala')">🍽️ Fome</button>
+      <button onclick="responder('Quero dormir', 'Nguna zanga kupomba')">😴 Dormir</button>
+      <button onclick="responder('Estou feliz', 'Ngunevu Txisseke')">😊 Feliz</button>
+      <button onclick="responder('Quero fazer teatro', 'Nguna zanga kulinga teatro')">🎭 Teatro</button>
+      <button onclick="responder('Preciso de ajuda', 'Ngukwasse')">🆘 Ajuda</button>
+      <button onclick="responder('Quero brincar', 'Nguna zangue kuhreraa')">🤹🏽‍♀️ Brincar</button>
+    </div>
+
+    <div class="output" id="resposta">
+      <p>Resposta aparecerá aqui.</p>
+    </div>
+  </div>
+
+  <footer>
+    Criado por Dala De Carvalho – Projeto DALA CURE OS. | Linguagem adaptada para Cokwe.
+  </footer>
+
+  <script>
+    function responder(portugues, cokwe) {
+      const output = document.getElementById('resposta');
+      output.innerHTML = `<strong>Português:</strong> ${portugues}<br><strong>Cokwe:</strong> ${cokwe}`;
+      const audio = new SpeechSynthesisUtterance(cokwe);
+      audio.lang = 'pt-AO';
+      window.speechSynthesis.speak(audio);
+    }
+  </script>
+</body>
+</html>
